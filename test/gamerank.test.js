@@ -14,5 +14,9 @@ test("should print help", async ({terminal}) => {
 
 test("should print rankings", async ({terminal}) => {
 	terminal.submit(gamestats + " --ranks");
-	await expect(terminal.getByText("Rankings")).toBeVisible();
+	await expect(terminal.getByText("Noob")).toBeVisible();
+	await expect(terminal.getByText("Silver")).toBeVisible();
+	await expect(terminal.getByText("Diamond")).toBeVisible();
+	await expect(terminal.getByText("Grandmaster")).toBeVisible();
+	await expect(terminal).toMatchSnapshot();
 })
