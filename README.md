@@ -11,8 +11,8 @@ Cieľom zadania je implementovať jednoduchú konzolovú aplikáciu (tzv. CLI - 
 ktorá vypočíta herné štatistiky hráča na základe vstupných parametrov.
 
 Program poskytne používateľovi možnosti zadania rôznych konfigurácii vstupov pre výpočet hráčskej štatistiky.
-Celý výpočet prebehne v jednom spustení programu. Program nič naukladá ani nepracuje so žiadnym externým zdrojom.
-Program po vypočítaní a vypísaní hráčskej štatistiky, podľa zadaných parametrov, skončí.
+Celý výpočet prebehne v jednom spustení programu. Program nepracuje so súbormi ani nepracuje so žiadnym externým
+zdrojom. Program po vypočítaní a vypísaní hráčskej štatistiky, podľa zadaných parametrov, skončí.
 
 Program po skompilovaní je spustení z konzoly/terminálu s tzv. pomenovaným argumentami (options)
 
@@ -33,8 +33,9 @@ Vstupmi programu je vyjadrená jedna hra. Hra pozostáva u nasledovných metrík
 
 ## Vstupy a argumenty
 
-Program príjma povinné argumenty, t.j. musia byť všetky povinné argumenty uvedené pri spustení programu, inak je program
-vypíše chybu. A nepovinné argumenty, ktoré dopĺňajú funkcionalitu programu pre ďalšie štatistiky.
+Program príjma povinné argumenty, t.j. musia byť všetky povinné argumenty uvedené pri spustení programu, inak program
+vypíše chybu, ktorý povinný argument pri volaní chýbal. A nepovinné argumenty, ktoré dopĺňajú funkcionalitu programu pre
+ďalšie štatistiky.
 
 ### **Povinné argumenty:**
 
@@ -47,7 +48,8 @@ vypíše chybu. A nepovinné argumenty, ktoré dopĺňajú funkcionalitu program
 
 - `--headshots POCET` - počet headshotov z uvedeného počtu zabití, celé číslo (_int_)
 - `--teamkills POCET` - počet teamkills na vlastný tým, celé číslo (_int_)
-- `--mvp` - získal MVP (Most Valuable Player), príznak, ktorý sa nastaví na 1 ak je tento argument prítomný
+- `--mvp` - získal MVP (Most Valuable Player) príznak. Argument nemá ďalšiu hodnotu, ak je prítomný pri spustení
+  programu, tak program použije tento príznak pri výpise a výpočet celkového skóre.
 
 ### **Pomocné príkazy:**
 
@@ -66,9 +68,9 @@ vypíše chybu. A nepovinné argumenty, ktoré dopĺňajú funkcionalitu program
 Program po spustení a prečítaní argumentov vypočíta štatistiku hry hráča. Program vypočíta nasledovné metriky hry:
 
 - **Kills/Deaths ratio (K/D)**  - Pomer Kills/Deaths (Zabití/Úmrtí)
-- **Kill,Assits/Deaths ratio (KDA)** - Pomer K/D aj s asistenciami podľa vzorca: `(Kills + Assists) / Deaths`
+- **Kill,Assists/Deaths ratio (KDA)** - Pomer K/D aj s asistenciami podľa vzorca: `(Kills + Assists) / Deaths`
 - **Kills per minute (KPM)** - Počet zabití za minútu hry, podľa vzorca: `Kills / Duration`
-- **Action per minute (APM)** - Počet akcií za minútu hry, podľa vzorca: `(Kills + Assits) / Duration`
+- **Action per minute (APM)** - Počet akcií za minútu hry, podľa vzorca: `(Kills + Assists) / Duration`
 - **Performance score** - Celkové skóre podľa načítaných bodov podľa vstupov. Ku vypočítanému skóre hra podľa
   definovanej tabuľky (viď _Rank System_) priradí rank/stupeň schopností hráča.
 
@@ -108,7 +110,7 @@ Assists:         <číslo na vstupe>
 Duration:        <číslo na vstupe> min
 Headshots:       <číslo na vstupe>
 Team Kills:      <číslo na vstupe>
-MVP:             <TRUE ak je príznak 1>
+MVP:             <TRUE ak je argument --mvp prítomný>
 --------------------------
 K/D:             <vypočítaná K/D hodnota>
 KDA:             <vypočítaná KDA hodnota>
@@ -143,7 +145,7 @@ Rank:            Silver
 
 ## Implementácia
 
-V rámci implementácie môžte použiť všetky štandardné funkcie knižnice jazyka C, v štandarde C17. Kód musí by
+V rámci implementácie môžte použiť všetky štandardné funkcie knižnice jazyka C, v štandarde C17. Kód musí byť
 skompilovateľný základnou inštaláciou programu **GCC**, takže pozor na Windows/Mac špecifické kompilátory.
 
 Funkcionalitu programu rozdelte do niekoľkých funkcií, ktoré následne použijete v programe. V zdrojovom kóde programu
@@ -181,7 +183,7 @@ Kompilátor vytvorí spustený program v priečinku _bin_ v repozitáry.
 
 ### Git
 
-Zdrojový kód tohto projektu je manažovaní verziovacím systémom Git. Pomocou Gitu je toto vypracovanie zadania aj
+Zdrojový kód tohto projektu je manažovaný verziovacím systémom Git. Pomocou Gitu je toto vypracovanie zadania aj
 odovzdané. Pre oboznámenie práce s Gitom si prečítajte tento
 článok [Git pre začiatočníkov](https://zapr.interes.group/guides/git-for-beginners/) alebo akýkoľvek iný tutoriál na
 internete.
@@ -253,7 +255,7 @@ Ako bonus môžte implementovať porovnanie štatistík viacerých hier naraz. V
 je potrebné implementovať nové argumenty `--compare` a `--game` ktoré pracujú so vstupmi pre viacero hier.
 
 Argument `--compare` spustí program v porovnávacom móde a ďalšie argumenty, ktoré bude spracovávať len argumenty
-s meno `--game`. Argumentov s prepínačom `--game` musia by minimálne 2 (aby bolo čo porovnávať). Hodnota argumentu
+s meno `--game`. Argumentov s prepínačom `--game` musia byť minimálne 2 (aby bolo čo porovnávať). Hodnota argumentu
 `--game` je string, ktorý obsahuje vstupy pre jednu hru, ako podľa pôvodnej definície programu. Vstupy ako aj
 štatistiky pre jednu hru sú spracované rovnako ako v pôvodnej verzii programu.
 
@@ -410,7 +412,7 @@ Rank:            Godlike
 ### Automatizované testovanie
 
 Tento repozitár obsahuje aj nastavenie pre automatizované testovanie pomocou nástroje _tui-test_.
-Tento program ja založený na jazyku Typescript a je spúšťaný pomocou Node.js. Všetky testy a nastavenia sú uchované
+Tento program je založený na jazyku Typescript a je spúšťaný pomocou Node.js. Všetky testy a nastavenia sú uchované
 v priečinku _test_ a **prísne zakázané ich prípadnú zmenu pushnúť do repozitára na odovzdanie**. Pre tých, ktorý
 ovládajú tento jazyk a sú schopný si rozšíriť test suite o vlastné testy pokojne môžu, len ich nikde nezdielajte a
 nepushujte do repozitára na GitHube na odovzdanie.
