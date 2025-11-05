@@ -228,7 +228,8 @@ Vypracovanie bude hodnotené aj ručne. Pri hodnotení vypracovania sa bude prih
 
 ## Odovzdanie
 
-Po prihlásení sa na zadanie 1 cez [GitHub Classroom]() vám je automaticky vytvorená kópia repozitára, ktorý bude
+Po prihlásení sa na zadanie 1 cez [GitHub Classroom](https://classroom.github.com/classrooms/62511873-pevs-zapr-2025) 
+vám je automaticky vytvorená kópia repozitára, ktorý bude
 nastavený ako privátny pre vás na vypracovanie (t.j. máte povolený commit a push do repozitára). Skontrolujte si, či sa
 váš repozitár nachádza pod skupinou _Interes-Group_, inak vyučujúci nemajú prístup ku vášmu repozitáru a zadanie sa
 nepovažuje za odovzdané. Ak sa vám repozitár nevytvorí ihneď kontaktuje vyučujúceho na MS Teams alebo na univerzitnom
